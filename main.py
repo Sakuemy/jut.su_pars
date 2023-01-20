@@ -37,7 +37,9 @@ if (site != ''):
         
         name = str(group.find('h1', {'class' : 'anime_padding_for_title'}).text).replace("Смотреть ", "").replace(' все серии и сезоны', '').replace(' все серии', '').replace(' ', '_')
         
-        if not os.path.exists("in\\" + name): os.makedirs("in\\" + name)
+        folder = name
+        
+        if not os.path.exists("in\\" + folder): os.makedirs("in\\" + name)
         
         max = len(group.find_all('a', {'class' : 'video'}))
         
@@ -58,7 +60,7 @@ if (site != ''):
                     if p.status_code != 200:
                         print("Ошибка " + str(p.status_code) + " при скачивании фала " + video_href['src'])
                     else:        
-                        out = open("in\\" + name + "\\" + str(i) + "_" + name + ".mp4", "wb")
+                        out = open("in\\" + folder + "\\" + str(i) + "_" + name + ".mp4", "wb")
                         out.write(p.content)
                         out.close()
 
