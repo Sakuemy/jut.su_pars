@@ -36,6 +36,8 @@ if (site != ''):
         group = soup.find('div', {'class' : 'watch_l'})
         
         name = str(group.find('h1', {'class' : 'anime_padding_for_title'}).text).replace("Смотреть ", "").replace(' все серии и сезоны', '').replace(' все серии', '').replace(' ', '_')
+
+        name = name.replace("+", "").replace("=", "").replace("[", "").replace("]", "").replace(":", "").replace("*", "").replace("?", "").replace(";", "").replace("«", "").replace("<", "").replace(">", "").replace("|", "")
         
         folder = name
         
